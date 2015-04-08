@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8" />
+	<title>Prueba de Front End</title>
+	<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js'></script>
+	<script src='https://code.angularjs.org/1.3.15/angular-route.js'></script>
+	<!-- Cargando catalogo de productos -->
+	<script src='static/js/source.js'></script>
+</head> 
+<body ng-app="NC">
+	<div ng-controller="CatCtrl">
+		<section>
+			<article ng-repeat="prod in prods">
+				<figure>
+					<img src="{{prod.image}}" alt="" width="180px" height="180px">
+				</figure>
+				<div>
+					{{prod.description}}
+				</div>
+				<div>
+					{{prod.price | currency}}
+				</div>
+			</article>
+		</section>
+	</div>
+	
+</body>
+</html>
