@@ -9,7 +9,8 @@
 	<script src='static/js/source.js'></script>
 </head> 
 <body ng-app="NC">
-	<div ng-controller="CatCtrl">
+	<!--
+	<div ng-controller="ProdCtrl">
 		<section>
 			<article ng-repeat="prod in prods">
 				<figure>
@@ -23,6 +24,10 @@
 				</div>
 			</article>
 		</section>
+	</div>
+-->
+	<div ng-controller="CatCtrl">
+		<p ng-repeat="item in cat">{{item.description}}</p>
 	</div>
 	
 </body>
