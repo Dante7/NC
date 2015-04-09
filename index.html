@@ -25,15 +25,15 @@
 	<div id="content" class="row">
 		<div id="catalogo" class="large-3 columns">
 			<div ng-controller="CatCtrl">
-				<ul>
+				<ul class="menu">
 					<li ng-repeat="seccion in catalog">
-						<a href="">{{seccion.description}}</a>
+					  <input type="checkbox" value="{{seccion.id}}" /> <a href="">{{seccion.description}}</a>
 						<ul>
 							<li ng-repeat="categoria in seccion.categories">
-								<a href="">{{categoria.description}}</a>
+								<input type="checkbox" value="{{categoria.id}}" /><a href="">{{categoria.description}}</a>
 								<ul>
 									<li ng-repeat="lineas in categoria.lines">
-										<a href="">{{lineas.description}}</a>
+										<input type="checkbox" value="{{lineas.id}}" /><a href="">{{lineas.description}}</a>
 									</li>
 								</ul>
 							</li>
@@ -41,7 +41,7 @@
 					</li>	
 				</ul>
 			</div>
-		</div>
+		</div><!--
 		<div id="productos" class="large-9 columns">
 			<div ng-controller="ProdCtrl">
 				<ul>
@@ -58,7 +58,7 @@
 					</li>
 				</ul>
 			</div>
-		</div>
+		</div>-->
 	</div>
 	
 </body>

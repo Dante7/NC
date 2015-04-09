@@ -2,3 +2,13 @@ body
 {
 	position: absolute;
 }
+
+.menu ul
+{
+  list-style:none;
+}
+
+.menu ul li
+{
+  
+}
