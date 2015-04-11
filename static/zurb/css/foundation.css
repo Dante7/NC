@@ -1689,7 +1689,7 @@ meta.foundation-mq-topbar {
 /* Wrapped around .top-bar to contain to grid width */
 .contain-to-grid {
   width: 100%;
-  background: #333333; }
+  background: #f2f2f2; }
   .contain-to-grid .top-bar {
     margin-bottom: 0; }
 
@@ -1717,7 +1717,7 @@ meta.foundation-mq-topbar {
   height: 2.8125rem;
   line-height: 2.8125rem;
   position: relative;
-  background: #333333;
+  background: #f2f2f2;
   margin-bottom: 0; }
   .top-bar ul {
     margin-bottom: 0;
@@ -1754,7 +1754,7 @@ meta.foundation-mq-topbar {
       margin: 0; }
       .top-bar .name h1 a, .top-bar .name h2 a, .top-bar .name h3 a, .top-bar .name h4 a, .top-bar .name p a, .top-bar .name span a {
         font-weight: normal;
-        color: #FFFFFF;
+        color: #f2f2f2;
         width: 75%;
         display: block;
         padding: 0 0.9375rem; }

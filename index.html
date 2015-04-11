@@ -6,59 +6,102 @@
 	<!-- If you delete this meta tag World War Z will become a reality -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Zurb Foundation -->
-	<link rel="stylesheet" type="text/css" href="static/zurb/css/foundation.css">
 	<link rel="stylesheet" type="text/css" href="static/zurb/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="static/zurb/css/foundation.css">
 	<script src='https://code.jquery.com/jquery-2.1.3.js'></script>
 	<script src='static/zurb/js/foundation.min.js'></script>
 	<!-- Librerias de Angular -->
 	<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js'></script>
 	<script src='https://code.angularjs.org/1.3.15/angular-route.js'></script>
+	<script src='https://cdn.rawgit.com/BinaryMuse/ngInfiniteScroll/1.0.0/build/ng-infinite-scroll.js'></script>
+	<script src='https://cdn.rawgit.com/gsklee/ngStorage/master/ngStorage.js'></script>
 	<!-- Cargando catalogo de productos -->
 	<script src='static/js/source.js'></script>
 	<link rel="stylesheet" type="text/css" href="static/css/estilos.css">
 </head> 
 <body ng-app="NC">
-	<header>
-		
-	</header>
+	<nav class="top-bar" data-topbar role="navigation">
+		<ul class="title-area">
+			<li class="name">
+			</li>
+			<li class="toggle-topbar menu-icon">
+				<a href="#">
+					<span>Menu</span>
+				</a>
+			</li>
+		</ul>
 
-	<div id="content" class="row">
-		<div id="catalogo" class="large-3 columns">
-			<div ng-controller="CatCtrl">
-			  <ul class="accordion" data-accordion>
-				<li ng-repeat="seccion in catalog" class="accordion-navigation">
-					  <input type="checkbox" value="{{seccion.id}}" /> <a href="">{{seccion.description}}</a>
-				  <ul class="accordion" data-accordion>
-					<li ng-repeat="categoria in seccion.categories" class="accordion-navigation">
-								<input type="checkbox" value="{{categoria.id}}" /><a href="">{{categoria.description}}</a>
-							  <ul class="accordion" data-accordion>
-								<li ng-repeat="lineas in categoria.lines" class="accordion-navigation">
-										<input type="checkbox" value="{{lineas.id}}" /><a href="">{{lineas.description}}</a>
-									</li>
-								</ul>
+		<section class="top-bar-section">
+			<!-- Left Nav Section -->
+			<ul class="right">
+				<li class="active">
+					<a href="#" class="nav-cuenta">
+						Mi cuenta
+					</a>
+				</li>
+			</ul>
+		</section>
+	</nav>
+	<header class="header">
+		<div class="small-12 medium-3 columns" id="logo">
+			<img src="https://media.licdn.com/mpr/mpr/jc/p/6/005/05c/36f/0ceddd1.png" alt=""/>
+		</div>
+		<div class="small-12 medium-7 columns search">
+			<input type="text" placeholder="Buscar productos" class="search-text-box">
+		</div>
+		<div class="small-6 medium-2 columns">
+			<div class="cesta">
+				<img src="static/img/bar-cart-icon.png" alt="">
+				<a href="#" class="button">
+					<span>$0.00</span>
+				</a>
+			</div>
+		</div>
+	</header>
+	<div class="row"></div>
+	<ul class="breadcrumbs">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Features</a></li>
+		<li class="unavailable"><a href="#">Gene Splicing</a></li>
+		<li class="current"><a href="#">Cloning</a></li>
+	</ul>
+	<div>
+		<div class="medium-3 columns hide-for-small-only">
+			<div ng-controller="CatCtrl" class="card">
+			  <ul class="content">
+				<li ng-repeat="seccion in catalog" class="seccion">
+						<a href="#{{seccion.id}}">{{seccion.description}}</a>
+				  		<ul>
+							<li ng-repeat="categoria in seccion.categories" class="categoria">
+									<a href="" id="{{seccion.id}}">{{categoria.description}}</a>
+									<ul>
+										<li ng-repeat="lineas in categoria.lines" class="linea">
+											<a href="">{{lineas.description}}</a>
+										</li>
+									</ul>
 							</li>
 						</ul>
 					</li>	
 				</ul>
 			</div>
-		</div><!--
-		<div id="productos" class="large-9 columns">
-			<div ng-controller="ProdCtrl">
-				<ul>
-					<li ng-repeat="prod in prods">
-						<figure>
-							<img src="{{prod.image}}" alt="" width="180px" height="180px">
+		</div>
+		<div id="productos" class="small-12 medium-9 columns">
+			<div ng-controller="ProdCtrl" class="card" >
+				<ul class="medium-block-grid-3" infinite-scroll='loadMore()' infinite-scroll-distance='2'>
+					<li ng-repeat="prod in prods" class="catalogo">
+						<figure class="frame-img">
+							<img src="{{prod.image}}" alt="" class="prod-img" />
 						</figure>
-						<div>
+						<div class="descripcion">
 							{{prod.description}}
 						</div>
-						<div>
+						<div class="descripcion">
 							{{prod.price | currency}}
 						</div>
 					</li>
 				</ul>
 			</div>
-		</div>-->
+		</div>
 	</div>
 	
 </body>
