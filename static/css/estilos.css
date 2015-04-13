@@ -84,6 +84,10 @@ html, body
     list-style: none;
 }
 
+.catalogo
+{
+    text-align: center;
+}
 .descripcion
 {
     font-size: 0.75rem;
