@@ -7,6 +7,7 @@
 		<div class="medium-3 columns hide-for-small-only right">
 			<select name="filtro" id="filtro" ng-model="filtro" ng-change="order()">
 				<option value="sku-false">Reciente</option>
+<<<<<<< HEAD
 				<option value="description-true">Alfabeticamente A-Z</option>
 				<option value="description-false">Alfabeticamente Z-A</option>
 				<option value="price-true">Menor precio</option>
@@ -36,6 +37,33 @@
 							</div>
 						</a>
 					</div>
+=======
+				<option value="name-false">Alfabeticamente A-Z</option>
+				<option value="name-true">Alfabeticamente Z-A</option>
+				<option value="price-false">Menor precio</option>
+				<option value="price-true">Mayor precio</option>
+			</select>
+		</div>
+	</div>
+	<div id="productos" class="small-12 medium-10 columns">
+		<div class="" >
+			<ul class="medium-block-grid-3" infinite-scroll='loadMore()' infinite-scroll-distance='2'>
+				<li ng-repeat="prod in prods" class="catalogo">
+					<a href="#prod/{{prod.sku}}">
+						<div>
+							<img src="{{prod.image}}" alt="" class="prod-img" />
+						</div>	
+						<div>
+							{{prod.score}}
+						</div>
+						<div class="descripcion">
+							{{prod.description}}
+						</div>
+						<div class="descripcion">
+							{{prod.price | currency}}
+						</div>
+					</a>
+>>>>>>> origin/master
 				</li>
 			</ul>
 		</div>
