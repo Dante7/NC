@@ -2,7 +2,7 @@
 
 /* App Module */
 
-var app = angular.module('NC', ['infinite-scroll','ngRoute','CatControllers']);
+var app = angular.module('NC', ['infinite-scroll','ngRoute','CatControllers','ngSanitize']);
 
 app.config(function ($routeProvider) {
 	$routeProvider
@@ -14,7 +14,5 @@ app.config(function ($routeProvider) {
 		.when('/prod/:sku',{
 			templateUrl: "detail.html",
 			controller: "DetailCtrl"		
-		}
-
-		);
+		});
 });

@@ -1,8 +1,25 @@
 <!DOCTYPE html>
 <div  ng-controller="DetailCtrl">
 	<div id="producto" class="small-12 medium-9 columns">
-		<div class="card" >
-			{{detail}}
+		<div class="prod-detail" >
+			<div>
+				{{detail.description}}
+			</div>
+			<div>
+				Marca: {{detail.brand.name}}
+			</div>
+			<div>
+				SKU: {{detail.sku}}
+			</div>
+			<div>
+				<img src="{{detail.image}}" alt="">
+			</div>
+			<div>
+				Precio: {{detail.price | currency}}
+			</div>
+			<div>
+				<div ng-bind-html='{{detail.review}}'></div>
+			</div>
 		</div>
 	</div>
 </div>

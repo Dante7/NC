@@ -15,7 +15,6 @@ function ProdCtrl($scope, $http, $filter){
 			for (var i = 0; i < 15; i++) {
 				++$scope.counter
 				$scope.prods.push($scope.items[$scope.counter]);
-				$scope.order();
 			};
 		}
 
@@ -24,14 +23,11 @@ function ProdCtrl($scope, $http, $filter){
 			//console.log(($scope.filtro).indexOf('-'));
 			$scope.filtro = ($scope.filtro).substring(0,($scope.filtro).indexOf('-'));
 			$scope.reverse = ($scope.filtro).substring(($scope.filtro).indexOf('-')+1);
-			$scope.prods = orderBy($scope.items, $scope.filtro, $scope.reverse);
+			$scope.prods = orderBy($scope.prods, $scope.filtro, $scope.reverse);
 		};
-		$scope.order();
 		$scope.loadMore();
 	});	
 }
-
-CatControllers.controller("ProdCtrl", ['$scope', '$http','$filter', ProdCtrl]);
 
 CatControllers.controller("CatCtrl", ['$scope','$http', 
 	function ($scope, $http) {
@@ -40,12 +36,15 @@ CatControllers.controller("CatCtrl", ['$scope','$http',
 		})
 }]);
 
+CatControllers.controller("ProdCtrl", ProdCtrl);
 
-CatControllers.controller("DetailCtrl", ['$scope', '$http', '$routeParams', 
-	function ($scope, $http, $routeParams) {
+CatControllers.controller("DetailCtrl", ['$scope', '$http', '$routeParams','$sce', 
+	function ($scope, $http, $routeParams, $sce) {
 		var sku = $routeParams.sku;
 		$http.get('http://api.ecommerce.next-cloud.mx/v1.0/demo.next-cloud.mx/products/' + sku).success(function (data) {
 			$scope.detail = data;
+			//$scope.review = $sce.trustAsHtml($scope.detail.review);
+			//console.log($scope.detail.review);
 			//console.log($scope.detail);
 		});
 }]);
