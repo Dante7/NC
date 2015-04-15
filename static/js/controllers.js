@@ -2,7 +2,7 @@
 
 var CatControllers = angular.module('CatControllers', []);
 
-function ProdCtrl($scope, $http, $filter){
+function ProdCtrl($scope, $http, $filter, $localStorage){
 	$http.get('http://api.ecommerce.next-cloud.mx/v1.0/demo.next-cloud.mx/products').success(function (data) {
 		$scope.items = data;
 		$scope.prods = [];
@@ -10,6 +10,12 @@ function ProdCtrl($scope, $http, $filter){
 		$scope.filtro = 'price';
 		$scope.reverse = true;
 		var orderBy = $filter('orderBy');
+
+		$scope.save = function(desc, price, img) {
+			console.log(desc);
+			console.log(price);
+			console.log(img);
+		}
 
 		$scope.loadMore = function () {
 			for (var i = 0; i < 15; i++) {
@@ -19,8 +25,6 @@ function ProdCtrl($scope, $http, $filter){
 		}
 
 		$scope.order = function() {
-			//console.log($scope.filtro);
-			//console.log(($scope.filtro).indexOf('-'));
 			$scope.filtro = ($scope.filtro).substring(0,($scope.filtro).indexOf('-'));
 			$scope.reverse = ($scope.filtro).substring(($scope.filtro).indexOf('-')+1);
 			$scope.prods = orderBy($scope.prods, $scope.filtro, $scope.reverse);

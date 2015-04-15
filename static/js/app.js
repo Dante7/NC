@@ -2,7 +2,7 @@
 
 /* App Module */
 
-var app = angular.module('NC', ['infinite-scroll','ngRoute','CatControllers','ngSanitize']);
+var app = angular.module('NC', ['infinite-scroll','ngRoute','CatControllers','ngSanitize','ngStorage']);
 
 app.config(function ($routeProvider) {
 	$routeProvider
