@@ -16,3 +16,8 @@ app.config(function ($routeProvider) {
 			controller: "DetailCtrl"		
 		});
 });
+
+app.factory('myCache', function($cacheFactory) {
+	// body...
+	return $cacheFactory('leData');
+})

@@ -2,7 +2,7 @@
 
 var CatControllers = angular.module('CatControllers', []);
 
-function ProdCtrl($scope, $http, $filter, $localStorage, myCache){
+function ProdCtrl($scope, $http, $filter, $localStorage){
 	$http.get('http://api.ecommerce.next-cloud.mx/v1.0/demo.next-cloud.mx/products').success(function (data) {
 		$scope.items = data;
 		$scope.prods = [];
@@ -24,33 +24,24 @@ function ProdCtrl($scope, $http, $filter, $localStorage, myCache){
 			//for (var i = $scope.compra.array.length - 1; i >= 0; i--) {
 				//console.log($scope.compra.array);
 			//};
-			//$localStorage.$reset();
 			console.log($scope.compra.array);
+			//$localStorage.$reset()
 		}
 
 		$scope.delete = function(sku) {
 			/*console.log(sku);*/
 			var largo = $scope.compra.array.length;
-			console.log($scope.compra);
-			for (var i = largo - 1; i >= 0; i--) {
-				if (sku === $scope.compra.array[i].sku) {
+			for (var i = $scope.compra.array.length - 1; i >= 0; i--) {
+				if (sku == $scope.compra.array[i].sku) {
+					console.log($scope.compra.array);
+					delete $scope.compra.array[i];
 					//console.log($scope.compra.array);
-					//delete $scope.compra.array[i];
-					$scope.compra.array.splice(i, 1);
 					break;
 				};
 			};
-			//console.log($scope.compra.array);
 			
 			/*$localStorage.compra.array.splice(sku, sku);*/
 		}
-
-		$scope.reset = function() {
-			$localStorage.$reset()
-			console.log($scope.compra.array);
-		}
-
-
 
 
 		$scope.loadMore = function () {
