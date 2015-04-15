@@ -9,12 +9,23 @@ function ProdCtrl($scope, $http, $filter, $localStorage){
 		$scope.counter = 0;
 		$scope.filtro = 'price';
 		$scope.reverse = true;
+		$scope.total = 0;
 		var orderBy = $filter('orderBy');
 
-		$scope.save = function(desc, price, img) {
-			console.log(desc);
-			console.log(price);
-			console.log(img);
+		$scope.save = function(sku, desc, price, img) {
+			var producto = {};
+			var pay = 0;
+			pay = $scope.total + price;
+			$scope.total = pay;
+			producto = {'sku':sku,'desc':desc, 'price':price, 'img':img};
+			$scope.compra = $localStorage.$default({array:[]});
+			$scope.compra.array.push(producto);
+			//console.log($scope.compra);
+			for (var i = $scope.compra.array.length - 1; i >= 0; i--) {
+				console.log($scope.compra.array[i]);
+			};
+			//console.log($scope.total);
+			//$localStorage.$reset()
 		}
 
 		$scope.loadMore = function () {
